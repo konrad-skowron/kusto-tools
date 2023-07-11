@@ -35,4 +35,5 @@ submitBtn.addEventListener('click', () => {
     } else {
         resutl.innerHTML = mappingArr.join('');
     }
+    document.getElementById('mappingInput').value = '';
 });
