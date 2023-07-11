@@ -30,8 +30,8 @@ submitBtn.addEventListener('click', () => {
         }
     }
 
-    if (stackSize > 0) {
-        resutl.innerHTML = 'Error! Check your input and try again'
+    if (stackSize !== 0) {
+        resutl.innerHTML = 'Error! Check your input and try again.'
     } else {
         resutl.innerHTML = mappingArr.join('');
     }
