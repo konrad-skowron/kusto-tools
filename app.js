@@ -8,23 +8,31 @@ submitBtn.addEventListener('click', () => {
 
     for (let i = 0; i < mapping.length; i++) {
         const char = mapping.charAt(i);
+
         if (char === '[') {
             if (stackSize === 0) {
                 mappingArr.push('\\\'');
             }
             stackSize++;
-        } else if (char === ']') {
-            stackSize--;
-            if (stackSize === 0) {
-                mappingArr.push('\\\'');
-            }
         } else if (char === '"') {
             mappingArr.push('\\');
         } else if (char === '\'') {
             mappingArr.push('\\\\');
         }
+
         mappingArr.push(mapping.charAt(i));
+
+        if (char === ']') {
+            stackSize--;
+            if (stackSize === 0) {
+                mappingArr.push('\\\'');
+            }
+        }
     }
 
-    resutl.innerHTML = mappingArr.join('');
+    if (stackSize > 0) {
+        resutl.innerHTML = 'Error! Check your input and try again'
+    } else {
+        resutl.innerHTML = mappingArr.join('');
+    }
 });
