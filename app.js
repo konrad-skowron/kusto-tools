@@ -5,7 +5,6 @@ function slashMapping(event) {
 
     for (let i = 0; i < mapping.length; i++) {
         const char = mapping.charAt(i);
-
         if (char === '[') {
             if (stackSize === 0) {
                 mappingArr.push('\\\'');
