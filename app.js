@@ -1,8 +1,5 @@
-const submitBtn = document.getElementById('submitBtn');
-const resutl = document.getElementById('result');
-
-submitBtn.addEventListener('click', () => {
-    const mapping = document.getElementById('mappingInput').value;
+function slashMapping(event) {
+    const mapping = input.value;
     const mappingArr = [];
     let stackSize = 0;
 
@@ -30,10 +27,16 @@ submitBtn.addEventListener('click', () => {
         }
     }
 
+    input.value = '';
     if (stackSize !== 0) {
-        resutl.innerHTML = 'Error! Check your input and try again.'
+        resutl.textContent  = 'Error! Check your input and try again.'
     } else {
-        resutl.innerHTML = mappingArr.join('');
+        resutl.textContent  = mappingArr.join('');
     }
-    document.getElementById('mappingInput').value = '';
-});
+    event.preventDefault(); // prevent page reload on form submit
+}
+
+const form = document.getElementById('mappingForm');
+const input = document.getElementById('mappingInput');
+const resutl = document.getElementById('result');
+form.addEventListener("submit", slashMapping);
