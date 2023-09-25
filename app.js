@@ -1,5 +1,5 @@
 let columnIndex = 0;
-const typeArr = ['bool', 'datetime', 'dynamic', 'guid', 'int', 'long', 'real', 'string', 'timespan', 'decimal', 'custom'];
+const typeArr = ['bool', 'datetime', 'dynamic', 'guid', 'int', 'long', 'real', 'string', 'timespan', 'decimal'];
 const columnArr = [];
 let columnStringArr = [];
 
@@ -129,6 +129,8 @@ function displayGenerator(targetDiv) {
         columnArr.splice(i++, 0, newColumn);
         displayGenerator(formDiv);
         columnIndex++;
+        dropdownBtn.style.fontStyle = 'normal';
+        dropdownBtn.textContent = 'custom';
     });
 
     const deleteBtn = document.createElement('button');
