@@ -1,3 +1,4 @@
+let columnTypeMap = new Map();
 let columnIndex = 0;
 let columnStringArr = [];
 const columnArr = [];
@@ -223,21 +224,19 @@ function generateConfig() {
 }
 
 function addEnhancedColumns() {
-    columnStringArr.push('_eventType');
-    columnStringArr.push('_kafkaTopic');
-    columnStringArr.push('_kafkaPartition');
-    columnStringArr.push('_kafkaOffset');
-    columnStringArr.push('_kafkaTimestamp');
-    columnStringArr.push('_schema');
-    columnStringArr.push('_eventTime');
-    columnStringArr.push('_indexTime');
-    columnStringArr.push('_aggregateId');
-    columnStringArr.push('_correlationId');
-    columnStringArr.push('_headers_name');
-    columnStringArr.push('_headers_value');
+    const enhacncementColumns = ['_eventType', '_kafkaTopic', '_kafkaPartition', '_kafkaOffset', '_kafkaTimestamp', '_schema', '_eventTime', '_indexTime', '_aggregateId', '_correlationId'];
+    const enhacncementTypes = ['string', 'string', 'int', 'int', 'long', 'string', 'datetime', 'long', 'string', 'string'];
+    for (let i = 0; i < enhacncementColumns.length; i++) {
+        columnStringArr.push(enhacncementColumns[i]);
+        columnTypeMap.set(enhacncementColumns[i], enhacncementTypes[i]);
+    }
 }
 
 function printConfig(config, tableName) {
+    columnTypeMap.forEach((value, key) => {
+        config += key + ': ' + value + ', ';
+    });
+
     let mappingScript = '[';
     for (const column of columnStringArr) {
         let pathString = '$';
