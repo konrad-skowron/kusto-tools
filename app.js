@@ -253,8 +253,8 @@ function printConfig(config, tableName) {
         '{' +
             '"column":"' + column + '",' +
             '"path":"' + pathString + '",' +
-            '"datatype": "",' +
-            '"transform": null' +
+            '"datatype":"",' +
+            '"transform":null' +
         '},';
     }
     mappingScript = mappingScript.slice(0, -1) + ']';
@@ -280,7 +280,6 @@ function printConfig(config, tableName) {
     '    env: \'\'<br>' +
     '}<br>' +
     '</pre>';
-    
 }
 
 function init() {
