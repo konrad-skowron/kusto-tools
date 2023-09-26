@@ -265,21 +265,21 @@ function printConfig(config, tableName) {
     tableConfig.style.color = '#dee2e6';
     tableConfig.innerHTML = 
     '<pre>' +
-    '{ <br>' +    
-    '    id: \'\', <br>' +
-    '    script: \'.create table ' + tableName + ' (' + config.slice(0, -2) + ')\', <br>' +
-    '    author: \'\', <br>' +
-    '    comment: \'\', <br>' +
-    '    env: \'\', <br>' +
-    '}, <br>' +
+    '{<br>' +    
+    '    id: \'\',<br>' +
+    '    script: \'.create table ' + tableName + ' (' + config.slice(0, -2) + ')\',<br>' +
+    '    author: \'\',<br>' +
+    '    comment: \'\',<br>' +
+    '    env: \'\'<br>' +
+    '},<br>' +
     '<br>' +
-    '{ <br>' +
-    '    id: \'\', <br>' +
-    '    script: \'.create table ' + tableName + ' ingestion json mapping \\"' + tableName + '_mapping\\" ' + slashedMappingScript + '\', <br>' +
-    '    author: \'\', <br>' +
-    '    comment: \'\', <br>' +
-    '    env: \'\', <br>' +
-    '} <br>' +
+    '{<br>' +
+    '    id: \'\',<br>' +
+    '    script: \'.create table ' + tableName + ' ingestion json mapping \\"' + tableName + '_mapping\\" ' + slashedMappingScript + '\',<br>' +
+    '    author: \'\',<br>' +
+    '    comment: \'\',<br>' +
+    '    env: \'\'<br>' +
+    '}<br>' +
     '</pre>';
     
 }
