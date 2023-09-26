@@ -1,7 +1,7 @@
 let columnIndex = 0;
-const typeArr = ['bool', 'datetime', 'dynamic', 'guid', 'int', 'long', 'real', 'string', 'timespan', 'decimal'];
-const columnArr = [];
 let columnStringArr = [];
+const columnArr = [];
+const typeArr = ['bool', 'datetime', 'dynamic', 'guid', 'int', 'long', 'real', 'string', 'timespan', 'decimal'];
 
 const masterContainer = document.getElementById('container');
 const container = document.getElementById('generatorContainer');
@@ -182,24 +182,9 @@ function generateConfig() {
         return;
     }
     for (const column of columnArr) {
-        if (column.parent == null && column.children.length === 0) {
-            try {
-                const form = document.getElementById('form' + column.id);
-                const input = form.querySelector('input');
-                const dropdown = form.querySelector('div.dropdown');
-                const dropdownBtn = dropdown.querySelector('button');
-                if (dropdownBtn.textContent === 'type' || input.value === '') {
-                    tableConfig.style.color = '#dc3545';
-                    tableConfig.textContent = 'Error! All columns must have specified name and type.'
-                    return;
-                }
-                config += input.value + ': ' + dropdownBtn.textContent + ', ';
-                columnStringArr.push(input.value);
-            } catch (error) {
-                continue;
-            }
-        } else if (column.children.length === 0) {
+        if (column.children.length === 0) {
             let parentPath = '';
+            let type = '';
             let tempColumn = column;
             while (tempColumn != null) {
                 try {
@@ -212,6 +197,9 @@ function generateConfig() {
                         tableConfig.textContent = 'Error! All columns must have specified name and type.'
                         return;
                     }
+                    if (type === '') {
+                        type = dropdownBtn.textContent;
+                    }
                     parentPath = input.value + '_' + parentPath;
                     tempColumn = tempColumn.parent;
                 } catch (error) {
@@ -220,7 +208,7 @@ function generateConfig() {
                 }
             }
             if (parentPath !== '') {
-                config += parentPath.slice(0, -1) + ': ' + dropdownBtn.textContent + ', ';
+                config += parentPath.slice(0, -1) + ': ' + type + ', ';
                 columnStringArr.push(parentPath.slice(0, -1));
             }
         }
