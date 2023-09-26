@@ -254,7 +254,7 @@ function printConfig(config, tableName) {
             '"column":"' + column + '",' +
             '"path":"' + pathString + '",' +
             '"datatype": "",' +
-            '"transform": ""'
+            '"transform": null' +
         '},';
     }
     mappingScript = mappingScript.slice(0, -1) + ']';
@@ -263,7 +263,7 @@ function printConfig(config, tableName) {
     const tableConfig = document.getElementById('tableConfig');
     tableConfig.style.color = '#dee2e6';
     tableConfig.innerHTML = 
-    '<pre>' +
+    '<pre style="margin-bottom: 0px;">' +
     '{<br>' +    
     '    id: \'\',<br>' +
     '    script: \'.create table ' + tableName + ' (' + config.slice(0, -2) + ')\',<br>' +
