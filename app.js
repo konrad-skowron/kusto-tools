@@ -226,7 +226,7 @@ function generateConfig() {
 function addEnhancedColumns() {
     const enhancmentColumns = ['_eventType', '_kafkaTopic', '_kafkaPartition', '_kafkaOffset', '_kafkaTimestamp', '_schema', '_eventTime', '_indexTime', '_aggregateId', '_correlationId'];
     const enhancementTypes = ['string', 'string', 'int', 'int', 'long', 'string', 'datetime', 'long', 'string', 'string'];
-    for (let i = 0; i < enhacncementColumns.length; i++) {
+    for (let i = 0; i < enhancmentColumns.length; i++) {
         columnStringArr.push(enhancmentColumns[i]);
         columnTypeMap.set(enhancmentColumns[i], enhancementTypes[i]);
     }
