@@ -266,7 +266,7 @@ function printConfig(config, tableName) {
     '<pre style="margin-bottom: 0px;">' +
     '{<br>' +    
     '    id: \'\',<br>' +
-    '    script: \'.create table ' + tableName + ' (' + config.slice(0, -2) + ')\',<br>' +
+    '    script: ".create table ' + tableName + ' (' + config.slice(0, -2) + ')",<br>' +
     '    author: \'\',<br>' +
     '    comment: \'\',<br>' +
     '    env: \'\'<br>' +
@@ -274,7 +274,7 @@ function printConfig(config, tableName) {
     '<br>' +
     '{<br>' +
     '    id: \'\',<br>' +
-    '    script: \'.create table ' + tableName + ' ingestion json mapping \\"' + tableName + '_mapping\\" ' + slashedMappingScript + '\',<br>' +
+    '    script: ".create table ' + tableName + ' ingestion json mapping \\"' + tableName + '_mapping\\" ' + slashedMappingScript + '",<br>' +
     '    author: \'\',<br>' +
     '    comment: \'\',<br>' +
     '    env: \'\'<br>' +
