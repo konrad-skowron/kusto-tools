@@ -22,8 +22,22 @@ function Column(id) {
     this.children = [];
 }
 
-function slashMapping(mappingArg) {
-    const mapping = mappingArg || input.value;
+function slashMapping() {
+    const mapping = input.value;
+    const mappingArr = [];
+
+    for (let i = 0; i < mapping.length; i++) {
+        const char = mapping.charAt(i);
+        if (char === '\'' || char === '"') {
+            mappingArr.push('\\');
+        }
+        mappingArr.push(mapping.charAt(i));
+    }
+    return mappingArr.join('');
+}
+
+function slashOldMapping(mappingArg) {
+    const mapping = mappingArg;
     const mappingArr = [];
     let stackSize = 0;
 
@@ -95,11 +109,11 @@ function displayGenerator(targetDiv) {
     dropdownBtn.style.fontStyle = 'italic';
     const dropdownMenu = document.createElement('div');
     dropdownMenu.classList.add('dropdown-menu');
-    for (let j = 0; j < typeArr.length; j++) {
+    for (const element of typeArr) {
         const dropdownItem = document.createElement('li');
         const dropdownContent = document.createElement('a');
         dropdownContent.classList.add('dropdown-item');
-        dropdownContent.text = typeArr[j];
+        dropdownContent.text = element;
         dropdownItem.addEventListener('click', () => {
             dropdownBtn.style.fontStyle = 'normal';
             dropdownBtn.textContent = dropdownContent.text;
@@ -258,7 +272,7 @@ function printConfig(config, tableName) {
         '},';
     }
     mappingScript = mappingScript.slice(0, -1) + ']';
-    const slashedMappingScript = slashMapping(mappingScript);
+    const slashedMappingScript = slashOldMapping(mappingScript);
 
     const tableConfig = document.getElementById('tableConfig');
     tableConfig.style.color = '#dee2e6';
