@@ -1,9 +1,9 @@
 # Kusto Tools
 ### Changelog Generator
-Schemas are available in `axon-avro-schemas`
+To start you need to find avro schema from your event type
 
 ### Mapping Slasher
-To obtain mapping execute this database query in adx
+To obtain mapping execute this query in ADX
 ```
 .show table MyTable ingestion json mappings
 ```
